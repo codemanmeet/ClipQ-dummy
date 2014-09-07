@@ -28,6 +28,7 @@ gem 'cancancan', '~> 1.8'
 gem 'simple_form'
 gem 'js-routes'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'paperclip-youtube'
 gem 'will_paginate', '~> 3.0'
 gem 'gravatar_image_tag'
 gem 'active_model_serializers'
