@@ -23,7 +23,7 @@ class ContentsController < ApplicationController
   	@content = Content.new(content_params)
 
     if @content.save
-    
+
       respond_to do |format|
         format.html { redirect_to contents_path }
         format.json { render json: @content, status: :created }
@@ -85,6 +85,32 @@ class ContentsController < ApplicationController
     @contentvote.save
     redirect_to contents_path
   end
+
+   def text_updates(content)
+    @content= content
+    # @account_sid = ENV["TWILIO_ID"]
+    # @auth_token = ENV["TWILIO_SECRET"]
+        # set up a client to talk to the Twilio REST API 
+        @client = Twilio::REST::Client.new ENV["TWILIO_ID"], ENV["TWILIO_SECRET"]  
+        @client.account.messages.create({
+          :from => ENV["TWILIO_PHONE"], 
+          :to => "#{@content.number}",
+          :body => "#{@content.name}: #{@content.message}"
+          })
+    end
+
+    def text_confirm(content)
+      get '/sms-quickstart' do
+      reply = params[:Body]
+      if reply == 'yes'
+          @twiml = Twilio::TwiML::Response.new do |r|
+          r.Message "Great. We'll send the message."
+      end
+          @twiml.text
+      end
+      end
+
+    end
 
   def contentvote_params
     params.require(:contentvote).permit(:secret_id, :upvote, :downvote)
