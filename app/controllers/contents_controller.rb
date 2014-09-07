@@ -1,6 +1,15 @@
 class ContentsController < ApplicationController
 	respond_to :json, :html
 
+  # put your own credentials here
+  account_sid = 'AC5be3d63327768fda22ea58caa5012314'
+  auth_token = '751b01371f54e97969a1ca5a0e8982dc'
+
+# set up a client to talk to the Twilio REST API
+  @client = Twilio::REST::Client.new account_sid, auth_token
+  HELLO = @client
+  puts "#{@client}"
+
   def index
   	@contents = Content.find_by_sql('SELECT * FROM contents ORDER BY created_at DESC')
   	respond_with @contents
@@ -23,7 +32,14 @@ class ContentsController < ApplicationController
   	@content = Content.new(content_params)
 
     if @content.save
-
+      begin
+      HELLO.messages.create(
+         :from => '+1650*******',
+         :to => '+1408*******',
+         :body => 'Hey there! Your ClipQ has been uploaded! Rejoice!'
+      )
+    rescue
+    end
       respond_to do |format|
         format.html { redirect_to contents_path }
         format.json { render json: @content, status: :created }

@@ -33,12 +33,6 @@ ActiveRecord::Schema.define(version: 20140907102034) do
     t.datetime "updated_at"
   end
 
-  create_table "categories", force: true do |t|
-    t.string   "tag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categs", force: true do |t|
     t.string   "tag"
     t.datetime "created_at"
@@ -55,19 +49,12 @@ ActiveRecord::Schema.define(version: 20140907102034) do
     t.string   "video"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "opened"
     t.string   "username"
     t.string   "categ"
   end
 
   create_table "contentvotes", force: true do |t|
-    t.integer  "upvote"
-    t.integer  "downvote"
-    t.integer  "secret_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "secretvotes", force: true do |t|
     t.integer  "upvote"
     t.integer  "downvote"
     t.integer  "secret_id"
