@@ -1,11 +1,14 @@
 class ContentController < ApplicationController
+	respond_to :json, :html
 
   def index
   	@contents = Content.find_by_sql('SELECT * FROM contents ORDER BY created_at DESC')
+  	respond_with @contents
   end
 
   def compindex
   	@contents = Content.find_by_sql('SELECT * FROM contents WHERE approved=false')
+  	respond_with @contents
   end
 
   def show
@@ -18,11 +21,18 @@ class ContentController < ApplicationController
 
   def create
   	@content = Content.new(content_params)
-  	if @content.save(content_params)
-  		redirect_to content_path
-  	else
-  		render 'new'
-  	end
+
+    if @content.save
+      respond_to do |format|
+        format.html { redirect_to admin_path }
+        format.json { render json: @content, status: :created }
+      end
+    else
+      respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @content.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
