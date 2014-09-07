@@ -1,2 +1,99 @@
-<h1>Content#index</h1>
-<p>Find me in app/views/content/index.html.erb</p>
+
+<div class="container-fluid col-md-10 col-md-offset-1" id="postbody">
+
+<h2 class="text-center">questions</h2>
+
+<% @contents.each do |c| %>
+
+<div class = "row-fluid">
+
+<h4><%= c.question %></h4>
+
+	<div class = "timecontainer">
+	<% @contentvotecount = Contentvote.where(:secret_id => c.id) %>
+	<% apple = 0 %>
+	<% @contentvotecount.each do |c| %>
+		<% if c.upvote == 1 %>
+			<% apple = apple + 1 %>
+		<% elsif c.downvote == 1 %>
+			<% apple = apple - 1 %>
+		<% end %>
+	<% end %>
+	<%= apple %> points
+
+	<% if Time.new.utc.year == c.created_at.to_s.split(/[^0-9]+/)[0].to_i%>
+			<% if Time.new.utc.month == c.created_at.to_s.split(/[^0-9]+/)[1].to_i %>
+				<% if Time.new.utc.day - c.created_at.to_s.split(/[^0-9]+/)[2].to_i < 2%>
+					<% if Time.new.utc.hour == c.created_at.to_s.split(/[^0-9]+/)[3].to_i %>
+						<% if Time.new.utc.min == c.created_at.to_s.split(/[^0-9]+/)[4].to_i %>
+						a few seconds ago
+						<% elsif Time.new.utc.min - c.created_at.to_s.split(/[^0-9]+/)[4].to_i < 2 %>
+						a minute ago
+						<% else %>
+						<%= Time.new.utc.min - c.created_at.to_s.split(/[^0-9]+/)[4].to_i %> minutes ago
+						<% end %>
+					<% else %>
+						<% if Time.new.utc.day == c.created_at.to_s.split(/[^0-9]+/)[2].to_i %>
+							<% if Time.new.utc.hour - c.created_at.to_s.split(/[^0-9]+/)[3].to_i <2 %>
+							an hour ago
+							<% else %>
+							<%= Time.new.utc.hour - c.created_at.to_s.split(/[^0-9]+/)[3].to_i %> hours ago
+							<% end %>
+						<% else %>
+							<%= Time.new.utc.hour+24 - c.created_at.to_s.split(/[^0-9]+/)[3].to_i %> hours ago
+						<% end %>
+					<% end %>
+
+				<% else %>
+					<% if Time.new.utc.day - c.created_at.to_s.split(/[^0-9]+/)[2].to_i <2 %>
+					yesterday
+					<% else %>
+					<%= Time.new.utc.day - c.created_at.to_s.split(/[^0-9]+/)[2].to_i %> days ago
+					<% end %>
+				<% end %>
+			<% else %> 
+				<% if Time.new.utc.month - c.created_at.to_s.split(/[^0-9]+/)[1].to_i <2 %>
+					last month
+				<% else %>
+					<%= Time.new.utc.month - c.created_at.to_s.split(/[^0-9]+/)[1].to_i %> months ago
+				<% end %>
+			<% end %>
+	<% else %>
+		<%= Time.new.utc.year - c.created_at.to_s.split(/[^0-9]+/)[0].to_i %> years ago 
+	<% end %>
+	</div>
+
+	<div class = "votecontainer">
+	<%= link_to upvote_content_path(s), class: "btn btn-link btn-block", method: :post do%>
+			<span class="glyphicon glyphicon-plus-sign"></span>
+	<% end %>
+	</div>
+
+	<div class = "votecontainer">
+	<%= link_to downvote_content_path(s), class: "btn btn-link btn-block", method: :post do%>
+			<span class="glyphicon glyphicon-minus-sign"></span>
+	<% end %>
+	</div>
+
+	<div class = "votecontainer">
+	<%= link_to content_path(s), class: "btn btn-link btn-block", method: :delete, data: {confirm: "Are you sure you want to delete?"} do%>
+		<span class="glyphicon glyphicon-remove-sign"></span>
+	<% end %> 
+	</div>
+
+</div>
+
+<br></br>
+<% end %>
+
+<br></br>
+</div>
+<div class="footer">
+	<%= link_to 'New question', new_content_path, class: "btn btn-primary btn-block" %>
+</div>
+<br></br>
+
+
+
+
+

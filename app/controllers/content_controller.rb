@@ -1,11 +1,11 @@
 class ContentController < ApplicationController
 
   def index
-  	@content = Content.find_by_sql('SELECT * FROM contents ORDER BY created_at DESC')
+  	@contents = Content.find_by_sql('SELECT * FROM contents ORDER BY created_at DESC')
   end
 
   def compindex
-  	@content = Content.find_by_sql('SELECT * FROM contents WHERE approved=false')
+  	@contents = Content.find_by_sql('SELECT * FROM contents WHERE approved=false')
   end
 
   def show

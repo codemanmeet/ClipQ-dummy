@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get 'content/index'
+get 'contents/compindex', to: 'contents#compindex'
+resources :contents do
+      member do
+        post 'upvote'
+        post 'downvote'
+      end
+end
 
-  get 'category/index'
+root "contents#index"
 
 
-  devise_for :users
-
-  root 'content#index'
+  devise_for :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,7 @@
+<h1>Complete User Index</h1>
+
+<% @contents.each do |s| %>
+<%= c.question %>  <%= link_to 'review to publish', edit_content_path(s), :class =>"btn btn-info" %>
+ <%= link_to 'Delete', content_path(s), method: :delete, data: {confirm: "Are you sure you want to delete this permanently?"}, :class =>"btn btn-danger" %>
+<br></br>
+<% end %>

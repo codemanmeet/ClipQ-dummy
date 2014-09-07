@@ -1,0 +1,7 @@
+<%= bootstrap_form_for (@content) do |s| %>
+	<%= s.text_area :question %><br />
+	<%= s.hidden_field :open, :value => true %><br />
+	<%= s.submit 'Submit', class: "btn btn-primary btn-block" %>
+
+
+<% end %>
