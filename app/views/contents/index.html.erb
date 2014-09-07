@@ -13,16 +13,8 @@
 <%=link_to 'video',"http://#{c.video}"%>
 
 	<div class = "timecontainer">
-	<% @contentvotecount = Contentvote.where(:secret_id => c.id) %>
-	<% apple = 0 %>
-	<% @contentvotecount.each do |c| %>
-		<% if c.upvote == 1 %>
-			<% apple = apple + 1 %>
-		<% elsif c.downvote == 1 %>
-			<% apple = apple - 1 %>
-		<% end %>
-	<% end %>
-	<%= apple %> points
+	
+
 
 	<% if Time.new.utc.year == c.created_at.to_s.split(/[^0-9]+/)[0].to_i%>
 			<% if Time.new.utc.month == c.created_at.to_s.split(/[^0-9]+/)[1].to_i %>
@@ -66,23 +58,7 @@
 	<% end %>
 	</div>
 
-	<div class = "votecontainer">
-	<%= link_to upvote_content_path(c), class: "btn btn-link btn-block", method: :post do%>
-			<span class="glyphicon glyphicon-plus-sign"></span>
-	<% end %>
-	</div>
-
-	<div class = "votecontainer">
-	<%= link_to downvote_content_path(c), class: "btn btn-link btn-block", method: :post do%>
-			<span class="glyphicon glyphicon-minus-sign"></span>
-	<% end %>
-	</div>
-
-	<div class = "votecontainer">
-	<%= link_to content_path(c), class: "btn btn-link btn-block", method: :delete, data: {confirm: "Delete"} do%>
-		<span class="glyphicon glyphicon-remove-sign"></span>
-	<% end %> 
-	</div>
+	
 
 </div>
 
