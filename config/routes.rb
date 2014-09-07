@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'category/index'
+
+  get 'question/index'
+
   devise_for :users
 
-  root 'administrators#index'
+  root 'question#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

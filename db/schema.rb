@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907012255) do
+ActiveRecord::Schema.define(version: 20140907013237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 20140907012255) do
     t.datetime "updated_at"
   end
 
+  create_table "categs", force: true do |t|
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "codes", force: true do |t|
     t.string   "value"
     t.datetime "created_at"
@@ -52,6 +58,8 @@ ActiveRecord::Schema.define(version: 20140907012255) do
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "open"
+    t.boolean  "opened"
   end
 
   create_table "contentvotes", force: true do |t|
