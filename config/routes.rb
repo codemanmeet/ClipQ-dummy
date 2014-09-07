@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 get 'content/compindex', to: 'content#compindex'
 resources :content do
-
+      member do
+        post 'upvote'
+        post 'downvote'
+      end
 end
 
 root "content#index"
