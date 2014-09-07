@@ -8,6 +8,9 @@
 <div class = "row-fluid">
 
 <h4><%= c.question %></h4>
+<h4> Open : <%= c.open %> </h4>
+
+<%=link_to 'video',"http://#{c.video}"%>
 
 	<div class = "timecontainer">
 	<% @contentvotecount = Contentvote.where(:secret_id => c.id) %>

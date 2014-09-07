@@ -5,7 +5,8 @@
 
 <%= bootstrap_form_for (@content) do |c| %>
 	<%= c.text_area :question, label:'new question' %><br />
-	<%= c.hidden_field :open, :value => false %><br />
+	<%= c.check_box  :open, :value => false %><br />
+	<%= c.text_field :video, label:'video' %> <br />
 	<%= c.submit 'Submit', class: "btn btn-primary btn-block" %>
 	
 
