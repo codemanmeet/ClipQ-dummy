@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-get 'content/compindex', to: 'content#compindex'
-resources :content do
+
+
+get 'contents/compindex', to: 'contents#compindex'
+resources :contents do
       member do
         post 'upvote'
         post 'downvote'
       end
 end
 
-root "content#index"
+root "contents#index"
 
 
   devise_for :users
