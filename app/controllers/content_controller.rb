@@ -24,7 +24,7 @@ class ContentController < ApplicationController
 
     if @content.save
       respond_to do |format|
-        format.html { redirect_to admin_path }
+        format.html { redirect_to content_path }
         format.json { render json: @content, status: :created }
       end
     else
