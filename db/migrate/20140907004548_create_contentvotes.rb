@@ -1,6 +1,6 @@
-class CreateSecretvotes < ActiveRecord::Migration
+class CreateContentvotes < ActiveRecord::Migration
   def change
-    create_table :secretvotes do |t|
+    create_table :contentvotes do |t|
       t.integer :upvote
       t.integer :downvote
       t.integer :secret_id

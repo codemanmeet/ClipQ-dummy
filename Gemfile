@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'foundation-rails'
+
 gem 'angularjs-rails'
 
 gem 'rails_12factor'
@@ -62,6 +62,8 @@ end
 gem 'jbuilder', '~> 2.0'
 
 gem 'figaro'
+gem 'devise_invitable', '~> 1.3.4'
+gem 'cancancan', '~> 1.8'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring'
