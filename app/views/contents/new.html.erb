@@ -1,2 +1,15 @@
-<h1>Contents#new</h1>
-<p>Find me in app/views/contents/new.html.erb</p>
+<div class="container-fluid col-md-8 col-md-offset-2">
+
+
+
+
+<%= bootstrap_form_for (@content) do |c| %>
+	<%= c.text_area :question, label:'new question' %><br />
+	<%= c.hidden_field :open, :value => false %><br />
+	<%= c.submit 'Submit', class: "btn btn-primary btn-block" %>
+	
+
+
+<% end %>
+
+</div>

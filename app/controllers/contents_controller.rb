@@ -24,7 +24,7 @@ class ContentsController < ApplicationController
 
     if @content.save
       respond_to do |format|
-        format.html { redirect_to content_path }
+        format.html { redirect_to contents_path }
         format.json { render json: @content, status: :created }
       end
     else
@@ -42,7 +42,7 @@ class ContentsController < ApplicationController
   def update
   	@content = Content.find(params[:id])
   	if @content.update(content_params)
-  		redirect_to content_compindex_path
+  		redirect_to contents_compindex_path
   	else 
   		render 'edit'
   	end
@@ -51,7 +51,7 @@ class ContentsController < ApplicationController
   def destroy
     @content = Content.find(params[:id])
     @content.destroy
-    redirect_to content_path
+    redirect_to contents_path
   end
 
   def upvote
@@ -59,7 +59,7 @@ class ContentsController < ApplicationController
     @contentvote = @content.contentvotes.build
     @contentvote.upvote = 1
     @contentvote.save
-    redirect_to content_path
+    redirect_to contents_path
   end
 
   def downvote
@@ -67,7 +67,7 @@ class ContentsController < ApplicationController
     @contentvote = @content.contentvotes.build
     @contentvote.downvote = 1
     @contentvote.save
-    redirect_to content_path
+    redirect_to contents_path
   end
 
   def contentvote_params

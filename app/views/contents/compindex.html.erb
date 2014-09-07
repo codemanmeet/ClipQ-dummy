@@ -1,2 +1,7 @@
-<h1>Contents#compindex</h1>
-<p>Find me in app/views/contents/compindex.html.erb</p>
+<h1>Complete User Index</h1>
+
+<% @contents.each do |c| %>
+<%= c.question %>  <%= link_to 'review to publish', edit_content_path(s), :class =>"btn btn-info" %>
+ <%= link_to 'Delete', content_path(s), method: :delete, data: {confirm: "Are you sure you want to delete this permanently?"}, :class =>"btn btn-danger" %>
+<br></br>
+<% end %>
