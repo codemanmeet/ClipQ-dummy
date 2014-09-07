@@ -87,6 +87,6 @@ class ContentsController < ApplicationController
     params.require(:contentvote).permit(:secret_id, :upvote, :downvote)
   end
   def content_params
-    params.require(:content).permit(:question, :video, :picture, :tag, :open)
+    params.require(:content).permit(:video, :username, :categ)
   end
 end
