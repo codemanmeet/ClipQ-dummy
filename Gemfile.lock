@@ -163,6 +163,9 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    paperclip-youtube (2.3.8.2)
+      activerecord
+      activesupport
     pg (0.17.1)
     phantomjs (1.9.7.1)
     poltergeist (1.5.1)
@@ -320,6 +323,7 @@ DEPENDENCIES
   json
   nokogiri
   paperclip!
+  paperclip-youtube
   pg
   poltergeist
   prerender_rails

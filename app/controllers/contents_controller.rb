@@ -33,6 +33,19 @@ class ContentsController < ApplicationController
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end
+
+  end
+
+  def create2
+ 
+   
+    respond_to do |format|
+      format.html {render text: "Your data was sucessfully loaded. Thanks"}
+      format.json { 
+                   Content.create(question: params[:question], video: params[:video], updated_at: Time.now)
+                   render text: Content.last.to_json  # !
+                  }
+    end
   end
 
   def edit
