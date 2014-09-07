@@ -21,6 +21,7 @@ gem 'angularjs-rails'
 
 gem 'rails_12factor'
 
+gem 'twilio-ruby', '~> 3.12'
 gem 'json'
 gem 'devise'
 gem 'devise_invitable', '~> 1.3.4'
