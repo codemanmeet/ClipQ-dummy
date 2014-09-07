@@ -19,7 +19,7 @@ class ContentController < ApplicationController
   def create
   	@content = Content.new(content_params)
   	if @content.save(content_params)
-  		redirect_to contents_path
+  		redirect_to content_path
   	else
   		render 'new'
   	end
@@ -32,7 +32,7 @@ class ContentController < ApplicationController
   def update
   	@content = Content.find(params[:id])
   	if @content.update(content_params)
-  		redirect_to contents_compindex_path
+  		redirect_to content_compindex_path
   	else 
   		render 'edit'
   	end
@@ -41,7 +41,7 @@ class ContentController < ApplicationController
   def destroy
     @content = Content.find(params[:id])
     @content.destroy
-    redirect_to contents_path
+    redirect_to content_path
   end
 
   def upvote
@@ -49,7 +49,7 @@ class ContentController < ApplicationController
     @contentvote = @content.contentvotes.build
     @contentvote.upvote = 1
     @contentvote.save
-    redirect_to contents_path
+    redirect_to content_path
   end
 
   def downvote
@@ -57,7 +57,7 @@ class ContentController < ApplicationController
     @contentvote = @content.contentvotes.build
     @contentvote.downvote = 1
     @contentvote.save
-    redirect_to contents_path
+    redirect_to content_path
   end
 
   def contentvote_params
