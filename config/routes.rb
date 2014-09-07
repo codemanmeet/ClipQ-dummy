@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  get 'content/index'
+
   get 'category/index'
 
-  get 'question/index'
 
   devise_for :users
 
-  root 'question#index'
+  root 'content#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
