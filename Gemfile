@@ -23,6 +23,8 @@ gem 'rails_12factor'
 
 gem 'json'
 gem 'devise'
+gem 'devise_invitable', '~> 1.3.4'
+gem 'cancancan', '~> 1.8'
 gem 'simple_form'
 gem 'js-routes'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
@@ -62,8 +64,7 @@ end
 gem 'jbuilder', '~> 2.0'
 
 gem 'figaro'
-gem 'devise_invitable', '~> 1.3.4'
-gem 'cancancan', '~> 1.8'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring'
